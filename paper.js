@@ -1,6 +1,6 @@
 
 
-console.log("asf")
+// console.log("asf")
 // alert("jal")
 
 function getComputerChoice() {
@@ -21,4 +21,16 @@ function getComputerChoice() {
     return choice
 }
 
-console.log(getComputerChoice())
+
+function getHumanChoice() {
+
+    let number =  Math.random();
+
+    let choice = prompt("What do you choose?");
+    
+    return choice;
+}
+
+// console.log(getComputerChoice())
+
+console.log(getHumanChoice())
