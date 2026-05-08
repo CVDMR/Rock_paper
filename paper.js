@@ -8,6 +8,10 @@ let humanScore = 0;
 let computerScore = 0;
 let roundCount = 0;
 
+const results = document.querySelector('div');
+const entryHuman = document.createElement("p");
+const entryComputer = document.createElement("p");
+
 
 humanBtn.addEventListener("click", getHumanChoice);
 
@@ -28,7 +32,12 @@ function getComputerChoice() {
     } else {
         computerChoice = "scissors";
     }    
-    alert(`O computador escolheu ${computerChoice}.`);
+
+    entryComputer.textContent = `The computer choice was ${computerChoice}`;
+
+    results.appendChild(entryComputer);
+    
+    // alert(`O computador escolheu ${computerChoice}.`);
     
    
   
@@ -39,8 +48,12 @@ function getHumanChoice() {
 
     const escolha = humanChoice.value.toLowerCase();
     humanChoice.value = "";
+
+    entryHuman.textContent = `Your choice was ${escolha}`;
+
+    results.appendChild(entryHuman);
    
-    alert(`Sua escolha foi ${escolha}.`);    
+    // alert(`Sua escolha foi ${escolha}.`);    
 }
 
 
