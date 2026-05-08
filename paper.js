@@ -2,33 +2,36 @@
 const humanBtn = document.getElementById("humanChoice");
 const computerBtn = document.getElementById("computerChoice");
 const play = document.getElementById("play");
- const choice = document.querySelector("input");
+let humanChoice = document.querySelector("input");
+let computerChoice = "";
 
 humanBtn.addEventListener("click", getHumanChoice);
 
 computerBtn.addEventListener("click", getComputerChoice);
 
+play.addEventListener("click", playRound);
+
 
 function getComputerChoice() {
 
     let number =  Math.random();
-    let choice;
+    // let choice;
 
     if (number < 0.3) {
-        choice = "paper";
+        computerChoice = "paper";
     } else if (number >= 0.3 && number < 0.6) {
-        choice = "rock";
+        computerChoice = "rock";
     } else {
-        choice = "scissors";
+        computerChoice = "scissors";
     }    
-    alert(`O computador escolheu ${choice}.`);
+    alert(`O computador escolheu ${computerChoice}.`);
 }
 
 
 function getHumanChoice() {
 
-    const escolha = choice.value.toLowerCase();
-    choice.value = "";
+    const escolha =humanChoice.value.toLowerCase();
+    // humanChoice.value = "";
 
   
 
@@ -42,10 +45,10 @@ function getHumanChoice() {
 
 function playRound () {
     let humanScore = 0;    
-    const humanChoice = getHumanChoice();
-    const computerChoice = getComputerChoice();
+    // const humanChoice = getHumanChoice();
+    // const computerChoice = getComputerChoice();
 
-    if (humanChoice === "paper") {
+    if (humanChoice.value === "paper") {
         if (computerChoice === "paper") {
            humanScore = 0;
         } else if (computerChoice === "rock") {
@@ -56,7 +59,7 @@ function playRound () {
         } 
     }
 
-   if (humanChoice === "rock") {
+   if (humanChoice.value === "rock") {
         if (computerChoice === "paper") {
             humanScore--;
         } else if (computerChoice === "rock") {
@@ -65,7 +68,7 @@ function playRound () {
            humanScore++;
         } }
 
-    if (humanChoice === "scissors") {
+    if (humanChoice.value === "scissors") {
         if (computerChoice === "paper") {
         humanScore++;        
         } else if (computerChoice === "rock") {                              
@@ -74,7 +77,7 @@ function playRound () {
             humanScore = 0;                    
         } }
     
-    return humanScore
+    alert(`Your chose ${humanChoice.value}, the computer chose ${computerChoice} and you scored ${humanScore}.`);
 }
 
 
