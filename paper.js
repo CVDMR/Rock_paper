@@ -6,6 +6,7 @@ let humanChoice = document.querySelector("input");
 let computerChoice = "";
 let humanScore = 0;
 let computerScore = 0;
+let roundCount = 0;
 
 
 humanBtn.addEventListener("click", getHumanChoice);
@@ -18,7 +19,7 @@ play.addEventListener("click", playRound);
 function getComputerChoice() {
 
     let number =  Math.random();
-    // let choice;
+    
 
     if (number < 0.3) {
         computerChoice = "paper";
@@ -28,20 +29,18 @@ function getComputerChoice() {
         computerChoice = "scissors";
     }    
     alert(`O computador escolheu ${computerChoice}.`);
+    
+   
+  
 }
 
 
 function getHumanChoice() {
 
-    const escolha =humanChoice.value.toLowerCase();
-    // humanChoice.value = "";
-
-  
-
-    alert(`Sua escolha foi ${escolha}.`);
-
-    
-    // return choice;
+    const escolha = humanChoice.value.toLowerCase();
+    humanChoice.value = "";
+   
+    alert(`Sua escolha foi ${escolha}.`);    
 }
 
 
@@ -88,16 +87,32 @@ function playRound () {
            computerScore = computerScore;                    
         } }
     
-    alert(`You chose ${humanChoice.value}, the computer chose ${computerChoice}. Therefor you scored is ${humanScore} and the computer score is ${computerScore}.`);
-}
+    
 
+    roundCount++;
+    alert(roundCount);
 
-function playGame() {
-    let result = 0;
-    for (i=1; i <=5; i++) {
-        result += playRound();
+    
+
+    if (roundCount == 3) {        
+        alert(`The game is over!! Final score: Human ${humanScore} vs Computer ${computerScore}!!`)
+        
+        rounCount = 0;
+        humanScore = 0;
+        computerScore = 0;
+    } else {
+        alert(`You chose ${humanChoice.value}, the computer chose ${computerChoice}. Therefor you scored is ${humanScore} and the computer score is ${computerScore}.`);
+
     }
-    return result
 }
 
-// console.log(playGame())
+
+// function playGame() {
+//     let result = 0;
+//     for (i=1; i <=5; i++) {
+//         result += playRound();
+//     }
+//     return result
+// }
+
+// humanChoice.focus()
