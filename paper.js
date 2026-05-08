@@ -4,6 +4,9 @@ const computerBtn = document.getElementById("computerChoice");
 const play = document.getElementById("play");
 let humanChoice = document.querySelector("input");
 let computerChoice = "";
+let humanScore = 0;
+let computerScore = 0;
+
 
 humanBtn.addEventListener("click", getHumanChoice);
 
@@ -44,40 +47,48 @@ function getHumanChoice() {
 
 
 function playRound () {
-    let humanScore = 0;    
-    // const humanChoice = getHumanChoice();
-    // const computerChoice = getComputerChoice();
+    
 
     if (humanChoice.value === "paper") {
         if (computerChoice === "paper") {
-           humanScore = 0;
+           humanScore = humanScore;
+           computerScore = computerScore;
+
         } else if (computerChoice === "rock") {
             humanScore++;
+            computerScore--;
         } else {
             result = "You loose! Scissors beats paper.";
-            humanScore--;            
+            humanScore--; 
+            computerScore++;           
         } 
     }
 
    if (humanChoice.value === "rock") {
         if (computerChoice === "paper") {
             humanScore--;
+            computerScore++;
         } else if (computerChoice === "rock") {
-            humanScore = 0;                
+            humanScore = humanScore;
+           computerScore = computerScore;                
         } else {
            humanScore++;
+           computerScore--;
         } }
 
     if (humanChoice.value === "scissors") {
         if (computerChoice === "paper") {
-        humanScore++;        
+        humanScore++;
+        computerScore--;        
         } else if (computerChoice === "rock") {                              
-            humanScore--;            
+            humanScore--; 
+            computerScore++;           
         } else {
-            humanScore = 0;                    
+            humanScore = humanScore;
+           computerScore = computerScore;                    
         } }
     
-    alert(`Your chose ${humanChoice.value}, the computer chose ${computerChoice} and you scored ${humanScore}.`);
+    alert(`You chose ${humanChoice.value}, the computer chose ${computerChoice}. Therefor you scored is ${humanScore} and the computer score is ${computerScore}.`);
 }
 
 
