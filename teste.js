@@ -1,16 +1,48 @@
 
-let humanScore = 0;
-let computerScore = 0;
+// let humanScore = 0;
+// let computerScore = 0;
 
-function playRound (humanChoice, computerChoice) {
+function playRound () {
     // humanChoice = getHumanChoice();
     // computerChoice = getComputerChoice();
 
     // humanChoice = humanChoice.toLowerCase();
     let result = "";
+    let humanScore = 0;
+    let computerScore = 0;
+    const humanChoice = getHumanChoice();
+    const computerChoice = getComputerChoice();
 
 
-     if (humanChoice === "scissors") {
+     if (humanChoice === "paper") {
+        if (computerChoice === "paper") {
+            result = "Tied!!!";
+        } else if (computerChoice === "rock") {
+            result = "You win! Paper beats rock.";
+            humanScore++;
+            computerScore--;
+        } else {
+            result = "You loose! Scissors beats paper.";
+            humanScore--;
+            computerScore++;
+        } 
+    }
+
+   if (humanChoice === "rock") {
+        if (computerChoice === "paper") {
+            result =    "You loose! Paper beats rock.";
+            humanScore--;
+            computerScore++;
+        } else if (computerChoice === "rock") {
+            result = "Tied!!!";                
+        } else {
+            result = "You win! Rock beats scissors.";
+            humanScore++;
+            computerScore--;
+        } }
+
+
+    if (humanChoice === "scissors") {
         if (computerChoice === "paper") {
         result = "You win! Scissors beats paper.";
         humanScore++;
@@ -23,8 +55,7 @@ function playRound (humanChoice, computerChoice) {
             result = "You tied!";                    
         } }
 
-    return result
-
+         return humanScore
 }
 
 function getHumanChoice() {
@@ -67,11 +98,37 @@ function getComputerChoice() {
 // console.log(f)
 // console.log(humanScore)
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+// const humanSelection = getHumanChoice();
+// const computerSelection = getComputerChoice();
 
-let round = playRound(humanSelection, computerSelection)
+// let round = playRound(humanSelection, computerSelection)
 
-console.log(computerSelection)
-console.log(humanSelection)
-console.log(round)
+// console.log(computerSelection)
+// console.log(humanSelection)
+// console.log(round)
+
+// let humanScore = 0;
+// let computerScore = 0;
+
+function fiveRounds() {
+        let result2 = 0;
+        let humanScore = 0;
+        // let computerScore = 0;
+
+    for (i=1; i <=2; i++) {
+        // let humanScore = 0;
+        // let computerScore = 0;
+
+     
+        result2 += playRound();
+        // computerScore += computerScore;
+        
+    }
+    return result2
+}
+
+resultado = fiveRounds()
+// re2 = playRound ()
+
+console.log(resultado)
+// console.log(re2)
