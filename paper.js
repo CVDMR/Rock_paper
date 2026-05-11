@@ -11,6 +11,7 @@ let roundCount = 0;
 const results = document.querySelector('div');
 const entryHuman = document.createElement("p");
 const entryComputer = document.createElement("p");
+const runningScore = document.createElement("p");
 
 
 humanBtn.addEventListener("click", getHumanChoice);
@@ -23,6 +24,8 @@ play.addEventListener("click", playRound);
 function getComputerChoice() {
 
     let number =  Math.random();
+    roundCount++;
+
     
 
     if (number < 0.3) {
@@ -47,7 +50,7 @@ function getComputerChoice() {
 function getHumanChoice() {
 
     const escolha = humanChoice.value.toLowerCase();
-    humanChoice.value = "";
+    
 
     entryHuman.textContent = `Your choice was ${escolha}`;
 
@@ -70,7 +73,6 @@ function playRound () {
             humanScore++;
             computerScore--;
         } else {
-            result = "You loose! Scissors beats paper.";
             humanScore--; 
             computerScore++;           
         } 
@@ -102,21 +104,27 @@ function playRound () {
     
     
 
-    roundCount++;
-    alert(roundCount);
+    // alert(humanChoice.value)
+    // alert(roundCount);
 
     
 
     if (roundCount == 3) {        
-        alert(`The game is over!! Final score: Human ${humanScore} vs Computer ${computerScore}!!`)
-        
+        runningScore.textContent = `The game is over!! Final score: Human ${humanScore} vs Computer ${computerScore}!!`;
+        // alert(`The game is over!! Final score: Human ${humanScore} vs Computer ${computerScore}!!`)
+
+               
         rounCount = 0;
         humanScore = 0;
         computerScore = 0;
     } else {
-        alert(`You chose ${humanChoice.value}, the computer chose ${computerChoice}. Therefor you scored is ${humanScore} and the computer score is ${computerScore}.`);
+        runningScore.textContent = `Round: ${roundCount}. Your scored is ${humanScore} and the computer score is ${computerScore}.`
+
+        // alert(`You chose ${humanChoice.value}, the computer chose ${computerChoice}. Therefor you scored is ${humanScore} and the computer score is ${computerScore}.`);
 
     }
+    humanChoice.value = "";
+    results.appendChild(runningScore);
 }
 
 
